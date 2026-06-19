@@ -1,0 +1,52 @@
+# =============================================================================
+# Lucy's Princess Parties — static demo (subdomain: demo-lpp)
+# Self-contained: declares its own RewriteEngine so it does NOT inherit or
+# clash with any parent .htaccess rewrite rules if this folder is nested.
+# =============================================================================
+
+# --- Keep this review demo out of all search engines --------------------------
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# --- Clean / extensionless URLs ----------------------------------------------
+# Lets /booking, /contact, etc. resolve to the real .html files.
+# (The existing .html links keep working too.)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Canonical: send /page.html -> /page (301) so the address bar shows clean URLs.
+  RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Serve /page when the file /page.html exists
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+# --- Caching ------------------------------------------------------------------
+# Vite fingerprints files in /assets, so they can be cached aggressively.
+# HTML is revalidated each time so content edits show up immediately on re-upload.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css              "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png            "access plus 6 months"
+  ExpiresByType image/jpeg           "access plus 6 months"
+  ExpiresByType image/svg+xml        "access plus 6 months"
+  ExpiresByType image/webp           "access plus 6 months"
+  ExpiresByType image/x-icon         "access plus 6 months"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|png|jpe?g|svg|webp|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# --- Friendly error page ------------------------------------------------------
+ErrorDocument 404 /index.html

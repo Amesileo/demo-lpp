@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Form | Lucy's Princess Parties</title>
+  <meta name="description" content="Book your princess party in minutes. Choose your package, character, date and add-ons with our guided booking form." />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ovo&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body data-page="booking">
+  <!-- @include "partials/header.html" -->
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Let's get the party started</span>
+        <h1>Booking Form</h1>
+        <p>Tell us about your celebration in a few simple steps. You'll see a live
+          summary and estimated total as you go. We confirm within 72 hours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" id="bookingApp">
+        <div class="booking" id="bookingWizard">
+          <!-- LEFT: wizard -->
+          <div class="form-card">
+            <!-- Progress -->
+            <ol class="wizard-progress" aria-hidden="true">
+              <li class="wizard-progress__item is-active"><span class="wizard-progress__dot">1</span><span>Package</span></li>
+              <li class="wizard-progress__item"><span class="wizard-progress__dot">2</span><span>Character</span></li>
+              <li class="wizard-progress__item"><span class="wizard-progress__dot">3</span><span>Event</span></li>
+              <li class="wizard-progress__item"><span class="wizard-progress__dot">4</span><span>Add-ons</span></li>
+              <li class="wizard-progress__item"><span class="wizard-progress__dot">5</span><span>Details</span></li>
+              <li class="wizard-progress__item"><span class="wizard-progress__dot">6</span><span>Review</span></li>
+            </ol>
+
+            <!-- Step 1: Package -->
+            <div class="step-panel is-active">
+              <h2>Choose your package</h2>
+              <p class="step-sub">Select the option that best suits your celebration.</p>
+              <div class="option-grid" id="packageOptions"></div>
+              <p class="choice-error" hidden>Please choose a package to continue.</p>
+            </div>
+
+            <!-- Step 2: Character -->
+            <div class="step-panel">
+              <h2>Pick your character</h2>
+              <p class="step-sub">Who would you like to bring the magic?</p>
+              <div class="option-grid" id="characterOptions"></div>
+              <p class="choice-error" hidden>Please choose a character to continue.</p>
+            </div>
+
+            <!-- Step 3: Event details -->
+            <div class="step-panel">
+              <h2>Event details</h2>
+              <p class="step-sub">When and where is the party?</p>
+              <div class="field-row">
+                <div class="field">
+                  <label for="date">Party date <span class="req">*</span></label>
+                  <input type="date" id="date" name="date" data-required="date" />
+                  <span class="field__error">Please choose a date today or later.</span>
+                </div>
+                <div class="field">
+                  <label for="time">Start time <span class="req">*</span></label>
+                  <input type="time" id="time" name="time" data-required />
+                  <span class="field__error">Please choose a start time.</span>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="children">Number of children <span class="req">*</span></label>
+                  <input type="number" id="children" name="children" min="1" max="60" placeholder="e.g. 12" data-required />
+                  <span class="field__error">Please enter how many children.</span>
+                </div>
+                <div class="field">
+                  <label for="venueType">Venue type <span class="req">*</span></label>
+                  <select id="venueType" name="venueType" data-required>
+                    <option value="">Please choose…</option>
+                    <option>Home</option>
+                    <option>Village / church hall</option>
+                    <option>Function room / venue</option>
+                    <option>Outdoors / garden</option>
+                    <option>Business / corporate</option>
+                    <option>Other</option>
+                  </select>
+                  <span class="field__error">Please choose a venue type.</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="address">Venue address <span class="req">*</span></label>
+                <input type="text" id="address" name="address" placeholder="Street address" data-required />
+                <span class="field__error">Please enter the venue address.</span>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="town">Town / city <span class="req">*</span></label>
+                  <input type="text" id="town" name="town" data-required />
+                  <span class="field__error">Please enter the town or city.</span>
+                </div>
+                <div class="field">
+                  <label for="postcode">Postcode <span class="req">*</span></label>
+                  <input type="text" id="postcode" name="postcode" autocomplete="postal-code" data-required />
+                  <span class="field__error">Please enter the postcode.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Add-ons -->
+            <div class="step-panel">
+              <h2>Add a little extra magic</h2>
+              <p class="step-sub">Optional — choose any add-ons you'd like (you can skip this step).</p>
+              <div class="option-grid" id="addonOptions"></div>
+            </div>
+
+            <!-- Step 5: Your details -->
+            <div class="step-panel">
+              <h2>Your details</h2>
+              <p class="step-sub">So we can confirm your booking.</p>
+              <div class="field-row">
+                <div class="field">
+                  <label for="firstName">First name <span class="req">*</span></label>
+                  <input type="text" id="firstName" name="firstName" autocomplete="given-name" data-required />
+                  <span class="field__error">Please enter your first name.</span>
+                </div>
+                <div class="field">
+                  <label for="lastName">Last name <span class="req">*</span></label>
+                  <input type="text" id="lastName" name="lastName" autocomplete="family-name" data-required />
+                  <span class="field__error">Please enter your last name.</span>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="cEmail">Email <span class="req">*</span></label>
+                  <input type="email" id="cEmail" name="email" autocomplete="email" data-required />
+                  <span class="field__error">Please enter a valid email.</span>
+                </div>
+                <div class="field">
+                  <label for="cPhone">Phone <span class="req">*</span></label>
+                  <input type="tel" id="cPhone" name="phone" autocomplete="tel" data-required="phone" />
+                  <span class="field__error">Please enter a valid phone number.</span>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="childName">Birthday child's name</label>
+                  <input type="text" id="childName" name="childName" />
+                </div>
+                <div class="field">
+                  <label for="childAge">Child's age</label>
+                  <input type="number" id="childAge" name="childAge" min="1" max="18" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="notes">Special requests</label>
+                <textarea id="notes" name="notes" placeholder="Allergies, themes, favourite songs, parking notes…"></textarea>
+              </div>
+            </div>
+
+            <!-- Step 6: Review -->
+            <div class="step-panel">
+              <h2>Review &amp; confirm</h2>
+              <p class="step-sub">Please check everything looks right before sending.</p>
+              <dl class="review-list" id="reviewBody"></dl>
+              <div class="summary__total" style="margin-bottom:1.2rem">
+                <span>Estimated total</span>
+                <strong id="reviewTotal">£0</strong>
+              </div>
+              <div class="field">
+                <label style="display:flex;gap:.6rem;align-items:flex-start;font-weight:600">
+                  <input type="checkbox" name="terms" data-required style="width:auto;margin-top:.3rem" />
+                  <span>I understand this is an enquiry and my booking is confirmed once Lucy's
+                    Princess Parties responds (within 72 hours). <span class="req">*</span></span>
+                </label>
+                <span class="field__error">Please tick the box to continue.</span>
+              </div>
+            </div>
+
+            <!-- Nav -->
+            <div class="wizard-nav">
+              <button type="button" class="btn btn--ghost" id="wizardBack" hidden>← Back</button>
+              <button type="button" class="btn" id="wizardNext">Next →</button>
+              <button type="button" class="btn btn--gold" id="wizardSubmit" hidden>Send booking request ✨</button>
+            </div>
+          </div>
+
+          <!-- RIGHT: live summary -->
+          <aside class="summary" aria-label="Booking summary">
+            <h3>Your booking</h3>
+            <div id="summaryBody"></div>
+            <div class="summary__total">
+              <span>Estimated total</span>
+              <strong id="summaryTotal">£0</strong>
+            </div>
+            <p class="summary__note">Estimate only. Final price confirmed by email.
+              A deposit may be required to secure your date.</p>
+          </aside>
+        </div>
+
+        <!-- Success -->
+        <div class="form-card booking-success" id="bookingSuccess" hidden>
+          <div class="booking-success__emoji" aria-hidden="true">🎉👑</div>
+          <h2>Your request is on its way!</h2>
+          <p>Thank you for choosing Lucy's Princess Parties. We've received your booking
+            request and will confirm by email within 72 hours.</p>
+          <p style="margin:1rem 0">Your reference: <strong id="bookingRef" style="color:var(--purple-700)"></strong></p>
+          <div class="hero__cta" style="justify-content:center">
+            <a class="btn" href="/">Back to home</a>
+            <a class="btn btn--ghost" href="/characters">Browse characters</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include "partials/footer.html" -->
+  <script type="module" src="/src/booking.ts"></script>
+</body>
+</html>

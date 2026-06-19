@@ -1,0 +1,3 @@
+# Client review demo — keep out of search engines entirely.
+User-agent: *
+Disallow: /

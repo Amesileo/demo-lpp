@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------------------
+// Design tokens — Lucy's Princess Parties
+// Soft, pastel & ethereal palette
+// ---------------------------------------------------------------------------
+
+:root {
+  // Brand palette — muted roses & lavenders
+  --pink-50: #fdf7fb;
+  --pink-100: #fbeef5;
+  --pink-200: #f4dcec;
+  --pink-300: #ebc6dd;
+  --pink-400: #dda8c8;
+  --pink-500: #cf8fb4; // muted rose accent
+  --pink-600: #b06f97; // deeper rose for text contrast
+
+  --purple-300: #d6cae9;
+  --purple-400: #c0aede;
+  --purple-500: #ab97d3;
+  --purple-600: #9a82c6; // primary
+  --purple-700: #7a629f; // deeper plum for text contrast
+
+  --gold-300: #f7eccf;
+  --gold-400: #ecd9a6;
+  --gold-500: #cdb06a;
+
+  --cream: #fffbf6;
+  --ink: #4c3d5e; // soft plum, not near-black
+  --ink-soft: #7f7191;
+  --white: #ffffff;
+
+  --bg: var(--cream);
+  --text: var(--ink);
+  --muted: var(--ink-soft);
+
+  // Effects — gentle, low-contrast shadows
+  --radius: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 4px 16px rgba(154, 130, 198, 0.10);
+  --shadow: 0 12px 30px rgba(154, 130, 198, 0.14);
+  --shadow-lg: 0 20px 48px rgba(154, 130, 198, 0.20);
+
+  --gradient-royal: linear-gradient(135deg, #a98fd4, #dca3c5);
+  --gradient-soft: linear-gradient(160deg, var(--pink-100), #efe9fa);
+
+  // Type
+  --font-display: 'Ovo', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Syne', system-ui, -apple-system, sans-serif;
+
+  --maxw: 1180px;
+}

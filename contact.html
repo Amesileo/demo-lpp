@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Lucy's Princess Parties</title>
+  <meta name="description" content="Get in touch with Lucy's Princess Parties. Call, email or send us a message about parties and events across Suffolk & Essex." />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ovo&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body data-page="contact">
+  <!-- @include "partials/header.html" -->
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Say hello</span>
+        <h1>Contact Us</h1>
+        <p>Got a question about a party, a character or a corporate event?
+          We'd love to hear from you and aim to reply within 72 hours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h2>Get in touch</h2>
+          <p>Prefer to talk it through? Reach us directly using the details below,
+            or send a message and we'll come back to you.</p>
+          <ul class="info-list">
+            <li>
+              <span class="ic" aria-hidden="true">📞</span>
+              <span><strong>Phone</strong><a href="tel:+447766698668">07766 698668</a></span>
+            </li>
+            <li>
+              <span class="ic" aria-hidden="true">✉️</span>
+              <span><strong>Email</strong><a href="mailto:lucysprincessparties@gmail.com">lucysprincessparties@gmail.com</a></span>
+            </li>
+            <li>
+              <span class="ic" aria-hidden="true">📍</span>
+              <span><strong>Service area</strong><span>Suffolk &amp; Essex</span></span>
+            </li>
+            <li>
+              <span class="ic" aria-hidden="true">⏱️</span>
+              <span><strong>Response time</strong><span>Within 72 hours</span></span>
+            </li>
+          </ul>
+          <p style="margin-top:1.5rem">
+            Ready to book? <a href="/booking">Use our booking form →</a>
+          </p>
+        </div>
+
+        <div class="form-card">
+          <div class="alert alert--success" id="contactSuccess" hidden>
+            ✨ Thank you! Your message has been sent — we'll be in touch within 72 hours.
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Your name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" />
+              <span class="field__error">Please enter your name.</span>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" />
+                <span class="field__error">Please enter a valid email.</span>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="e.g. Birthday party enquiry" />
+            </div>
+            <div class="field">
+              <label for="message">Message <span class="req">*</span></label>
+              <textarea id="message" name="message" placeholder="Tell us about your event..."></textarea>
+              <span class="field__error">Please enter a short message.</span>
+            </div>
+            <button type="submit" class="btn btn--block btn--lg">Send message ✨</button>
+            <p class="form-note">By submitting this form you agree to be contacted about your enquiry.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include "partials/footer.html" -->
+  <script type="module" src="/src/contact.ts"></script>
+</body>
+</html>
