@@ -13,7 +13,7 @@ export function characterCard(c: Character): string {
         <h3>${c.name}</h3>
         <p class="char-card__tagline">${c.tagline}</p>
         <p>${c.description}</p>
-        <a class="btn btn--block" href="/booking?character=${c.id}">Book ${c.name.split(' ').pop()} ✨</a>
+        <a class="btn btn--block" href="booking?character=${c.id}">Book ${c.name.split(' ').pop()} ✨</a>
       </div>
     </article>`;
 }
@@ -27,6 +27,6 @@ export function packageCard(p: Package): string {
       <div class="pkg__price">${formatGBP(p.price)}</div>
       <p class="pkg__meta">${p.durationLabel} &middot; ${p.capacity}</p>
       <ul class="pkg__list">${items}</ul>
-      <a class="btn btn--block" href="/booking?package=${p.id}">Book this package</a>
+      <a class="btn btn--block" href="booking?package=${p.id}">Book this package</a>
     </article>`;
 }

@@ -2,7 +2,7 @@
 // Spins on its vertical axis (rotateY + container perspective) in proportion
 // to scroll progress. Disabled for users who prefer reduced motion.
 
-const SILHOUETTE = `<img class="pt-fig" src="/images/Princess-twirl.png" alt="" role="presentation" />`;
+const SILHOUETTE = `<img class="pt-fig" src="images/Princess-twirl.png" alt="" role="presentation" />`;
 
 export function initPrincessTwirl(): void {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

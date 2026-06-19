@@ -48,7 +48,9 @@ function htmlIncludes(): Plugin {
 
 export default defineConfig({
   plugins: [htmlIncludes(), cleanUrlsDev()],
-  base: '/',
+  // Relative base so the same build works at a domain root (20i subdomain) and
+  // under a subpath (GitHub Pages project URL, /demo-lpp/).
+  base: './',
 
   build: {
     outDir: 'dist',
